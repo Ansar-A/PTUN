@@ -29,7 +29,6 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=ptun
-  
       - MYSQL_PASSWORD=112233
 
   #pgsql:
