@@ -42,6 +42,7 @@ class Permintaan extends \yii\db\ActiveRecord
             [['get_user', 'get_barang', 'jumlah'], 'integer'],
             [['status_permintaan', 'ket'], 'string'],
             [['tgl_permintaan'], 'safe'],
+            [['tgl_permintaan'], 'required'],
             [['get_barang'], 'exist', 'skipOnError' => true, 'targetClass' => StokBarang::class, 'targetAttribute' => ['get_barang' => 'id_stok']],
             [['get_user'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['get_user' => 'id']],
             [['get_jenis'], 'exist', 'skipOnError' => true, 'targetClass' => JenisBarang::class, 'targetAttribute' => ['get_jenis' => 'id_jenis']],

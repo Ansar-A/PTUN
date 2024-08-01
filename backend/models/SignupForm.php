@@ -16,7 +16,7 @@ class SignupForm extends Model
     public $email;
     public $password;
     public $nip;
-    public $get_jabatan;
+   
     public $level;
 
     /**
@@ -40,7 +40,7 @@ class SignupForm extends Model
             ['password', 'string', 'min' => Yii::$app->params['user.passwordMinLength']],
 
             ['nip', 'string', 'min' => 18, 'max' => 18],
-            [['get_jabatan'], 'exist', 'skipOnError' => true, 'targetClass' => Jabatan::class, 'targetAttribute' => ['get_jabatan' => 'id_jabatan']],
+            
             ['level', 'safe']
         ];
     }
@@ -61,7 +61,7 @@ class SignupForm extends Model
         $user->email = $this->email;
         $user->nip = $this->nip;
         $user->level = $this->level;
-        $user->get_jabatan = $this->get_jabatan;
+       
         $user->setPassword($this->password);
         $user->generateAuthKey();
         $user->generateEmailVerificationToken();

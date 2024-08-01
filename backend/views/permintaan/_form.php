@@ -44,31 +44,7 @@ use yii\widgets\ActiveForm;
                     }
                     ?>
                 </div>
-                <div class="col-md-4">
-                    <?php
-                    $user = Yii::$app->user->identity;
-                    if ($user) {
-                        $data = User::find()->all();
-
-                        if ($data) {
-                            echo $form->field($model, 'get_user')->dropDownList(
-                                ArrayHelper::map(
-                                    $data,
-                                    'id',
-                                    function ($data) {
-                                        return $data->jabatans->jabatan;
-                                    }
-                                ),
-
-                            )->label('Jabatan');
-                        } else {
-                            echo "No user data found.";
-                        }
-                    } else {
-                        echo "User not logged in.";
-                    }
-                    ?>
-                </div>
+                <!--  -->
                 <div class="col-md-4">
                     <?= $form->field($model, 'get_jenis')->dropDownList(
                         ArrayHelper::map(
@@ -112,34 +88,7 @@ use yii\widgets\ActiveForm;
                     }
                     ?>
                 </div>
-                <div class="col-md-4">
-                    <?php
-                    $user = Yii::$app->user->identity;
-
-                    if ($user) {
-                        $data = User::find()->where(['id' => $user->id])->all();
-
-                        if ($data) {
-                            echo $form->field($model, 'get_user')->dropDownList(
-                                ArrayHelper::map(
-                                    $data,
-                                    'id',
-                                    function ($data) {
-                                        return $data->jabatans->jabatan;
-                                    }
-                                ),
-                                [
-                                    'options' => ['disabled' => true],
-                                ]
-                            )->label('Jabatan');
-                        } else {
-                            echo "No user data found.";
-                        }
-                    } else {
-                        echo "User not logged in.";
-                    }
-                    ?>
-                </div>
+                
                 <div class="col-md-4">
                     <?= $form->field($model, 'get_jenis')->dropDownList(
                         ArrayHelper::map(JenisBarang::find()->all(), 'id_jenis', 'jenis_barang'),

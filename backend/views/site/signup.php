@@ -36,29 +36,13 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="mb-2">
                 <?= $form->field($model, 'nip')->textInput(['type' => 'number', 'placeholder' => '18 dijid'])->label('') ?>
             </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <?php
-                    $data = Jabatan::find()->all();
-                    echo $form->field($model, 'get_jabatan')->dropDownList(
-                        ArrayHelper::map(
-                            $data,
-                            'id_jabatan',
-                            function ($data) {
-                                return $data->jabatan;
-                            }
-                        ),
-                        ['prompt' => '-- Pilih Jabatan --']
-                    )->label('')
-                    ?>
-                </div>
-                <div class="col-md-6">
+            <div class="mb-2">
                     <?= $form->field($model, 'level')->dropDownList(
                         ['instansi' => 'Instansi', 'admin' => 'Admin'],
                         ['prompt' => '-- Pilih Level User --',]
                     )->label('') ?>
                 </div>
-            </div>
+            
 
             <div class="form-group" style="padding-top: 20px;">
                 <?= Html::submitButton('Signup', ['class' => 'btn btn-primary btn-block', 'name' => 'signup-button']) ?>

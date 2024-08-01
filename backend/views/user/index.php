@@ -49,7 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="card-body">
                 <?php if (Yii::$app->user->identity->level === 'admin') : ?>
                     <p>
-                        <?= Html::a('Create User', ['create'], ['class' => 'btn btn-success']) ?>
+                        <!-- <?= Html::a('Create User', ['create'], ['class' => 'btn btn-success']) ?> -->
                     </p>
                 <?php else : ?>
                 <?php endif ?>
@@ -68,13 +68,13 @@ $this->params['breadcrumbs'][] = $this->title;
                             ['class' => 'yii\grid\SerialColumn'],
                             'username',
                             'email:email',
-                            [
-                                'attribute' =>  'get_jabatan',
-                                'value' => function ($model) {
-                                    return $model->jabatans->jabatan;
-                                },
-                                'label' => 'Jabatan'
-                            ],
+                            // [
+                            //     'attribute' =>  'get_jabatan',
+                            //     'value' => function ($model) {
+                            //         return $model->jabatans->jabatan;
+                            //     },
+                            //     'label' => 'Jabatan'
+                            // ],
                             'nip',
                             'level',
                             [
@@ -130,13 +130,13 @@ $this->params['breadcrumbs'][] = $this->title;
                             // ['class' => 'yii\grid\SerialColumn'],
                             'username',
                             'email:email',
-                            [
-                                'attribute' =>  'get_jabatan',
-                                'value' => function ($model) {
-                                    return $model->jabatans->jabatan;
-                                },
-                                'label' => 'Jabatan'
-                            ],
+                            // [
+                            //     'attribute' =>  'get_jabatan',
+                            //     'value' => function ($model) {
+                            //         return $model->jabatans->jabatan;
+                            //     },
+                            //     'label' => 'Jabatan'
+                            // ],
                             'nip',
                             'level',
                             [

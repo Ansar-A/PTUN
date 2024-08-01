@@ -57,7 +57,7 @@ class User extends ActiveRecord implements IdentityInterface
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_INACTIVE, self::STATUS_ACTIVE, self::STATUS_DELETED]],
             ['level', 'in', 'range' => ['instansi', 'admin']],
-            [['get_jabatan'], 'exist', 'skipOnError' => true, 'targetClass' => Jabatan::class, 'targetAttribute' => ['get_jabatan' => 'id_jabatan']],
+            
             ['nip', 'string', 'min' => 18, 'max' => 18]
         ];
     }
@@ -214,10 +214,7 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $this->password_reset_token = null;
     }
-    public function getJabatans()
-    {
-        return $this->hasOne(Jabatan::class, ['id_jabatan' => 'get_jabatan']);
-    }
+    
     public function getPermintaans()
     {
         return $this->hasMany(User::class, ['get_user' => 'id']);

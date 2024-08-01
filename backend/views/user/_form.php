@@ -16,13 +16,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'status')->textInput() ?>
 
-    <?= $form->field($model, 'get_jabatan')->dropDownList([
-        ArrayHelper::map(
-            $data = Jabatan::find()->all(),
-            'id_jabatan',
-            'jabatan'
-        )
-    ]) ?>
+    
 
     <?= $form->field($model, 'nip')->textInput(['maxlength' => true]) ?>
 
