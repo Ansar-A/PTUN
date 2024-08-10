@@ -7,7 +7,7 @@ use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
-
+use common\models\Unit;
 /**
  * User model
  *
@@ -58,7 +58,9 @@ class User extends ActiveRecord implements IdentityInterface
             ['status', 'in', 'range' => [self::STATUS_INACTIVE, self::STATUS_ACTIVE, self::STATUS_DELETED]],
             ['level', 'in', 'range' => ['instansi', 'admin']],
             
-            ['nip', 'string', 'min' => 18, 'max' => 18]
+            ['nip', 'string', 'min' => 18, 'max' => 18],
+
+             [['get_unit'], 'exist', 'skipOnError' => true, 'targetClass' => Unit::class, 'targetAttribute' => ['get_unit' => 'id_unit']],
         ];
     }
 
@@ -218,5 +220,9 @@ class User extends ActiveRecord implements IdentityInterface
     public function getPermintaans()
     {
         return $this->hasMany(User::class, ['get_user' => 'id']);
+    }
+     public function getUnit()
+    {
+        return $this->hasOne(Unit::class, ['id_unit' => 'get_unit']);
     }
 }

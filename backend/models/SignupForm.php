@@ -16,7 +16,7 @@ class SignupForm extends Model
     public $email;
     public $password;
     public $nip;
-   
+   public $get_unit;
     public $level;
 
     /**
@@ -41,7 +41,9 @@ class SignupForm extends Model
 
             ['nip', 'string', 'min' => 18, 'max' => 18],
             
-            ['level', 'safe']
+            ['level', 'safe'],
+
+            [['get_unit'], 'exist', 'skipOnError' => true, 'targetClass' => Unit::class, 'targetAttribute' => ['get_unit' => 'id_unit']],
         ];
     }
 
@@ -61,7 +63,7 @@ class SignupForm extends Model
         $user->email = $this->email;
         $user->nip = $this->nip;
         $user->level = $this->level;
-       
+        $user->get_unit = $this->get_unit;
         $user->setPassword($this->password);
         $user->generateAuthKey();
         $user->generateEmailVerificationToken();

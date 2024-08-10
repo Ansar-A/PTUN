@@ -9,7 +9,7 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
-
+use common\models\Unit;
 $this->title = 'Signup';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -41,8 +41,13 @@ $this->params['breadcrumbs'][] = $this->title;
                         ['instansi' => 'Instansi', 'admin' => 'Admin'],
                         ['prompt' => '-- Pilih Level User --',]
                     )->label('') ?>
-                </div>
-            
+            </div>
+            <div class="mb-2">
+                    <?= $form->field($model, 'get_unit')->dropDownList(
+                       ['umum' => 'Umum', 'keuangan' => 'Keuangan', 'kepegawaian' => 'Kepegawaian', 'panitra' => 'Panitra',  'jurusita' => 'Jurusita', 'ppnpn' => 'PPNPN',]  
+                       ,['prompt' => '-- Pilih Unit Kerja --']
+                    )->label('') ?>
+            </div>
 
             <div class="form-group" style="padding-top: 20px;">
                 <?= Html::submitButton('Signup', ['class' => 'btn btn-primary btn-block', 'name' => 'signup-button']) ?>
