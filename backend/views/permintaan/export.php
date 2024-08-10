@@ -45,6 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <tr>
                 <th style="text-align: center;">No</th>
                 <th style="text-align: center;">Nama</th>
+                <th style="text-align: center;">Unit Kerja</th>
                 <th style="text-align: center;">Nama Barang</th>
                 <th style="text-align: center;">Jenis Barang</th>
                 <th style="text-align: center;">Jumlah</th>
@@ -59,6 +60,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <tr>
                     <td style="text-align: center;"><?= $no++ ?></td>
                     <td style="text-align: center;"><?= $model->user->username ?></td>
+                    <td style="text-align: center;"><?= $model->user->unit->nama_unit ?></td>
                     <td style="text-align: center;"><?= $model->stokBarang->nama_barang ?></td>
                     <td style="text-align: center;"><?= $model->jenis->jenis_barang ?></td>
                     <td style="text-align: center;"><?= $model->jumlah ?></td>

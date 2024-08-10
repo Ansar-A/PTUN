@@ -185,12 +185,19 @@ if (Yii::$app->user->identity->level === 'admin') {
                         'header' => 'No'
                     ],
 
-                    // 'id_permintaan',
+                     
                     [
                         'attribute' =>  'get_user',
                         'label' => 'Nama',
                         'value' => function ($model) {
                             return $model->user->username;
+                        }
+                    ],
+                    [
+                        'attribute' =>  'get_user',
+                        'label' => 'Unit Kerja',
+                        'value' => function ($model) {
+                            return $model->user->unit->nama_unit;
                         }
                     ],
                     [
@@ -298,13 +305,13 @@ if (Yii::$app->user->identity->level === 'admin') {
                     ],
 
                     // 'id_permintaan',
-                    [
-                        'attribute' =>  'get_user',
-                        'label' => 'Nama',
-                        'value' => function ($model) {
-                            return $model->user->username;
-                        }
-                    ],
+                    // [
+                    //     'attribute' =>  'get_user',
+                    //     'label' => 'Nama',
+                    //     'value' => function ($model) {
+                    //         return $model->user->username;
+                    //     }
+                    // ],
                     [
                         'attribute' => 'get_barang',
                         'label' => 'Nama Barang',

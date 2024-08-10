@@ -59,8 +59,9 @@ class User extends ActiveRecord implements IdentityInterface
             ['level', 'in', 'range' => ['instansi', 'admin']],
             
             ['nip', 'string', 'min' => 18, 'max' => 18],
+            [['get_unit'], 'required'],
 
-             [['get_unit'], 'exist', 'skipOnError' => true, 'targetClass' => Unit::class, 'targetAttribute' => ['get_unit' => 'id_unit']],
+            [['get_unit'], 'exist', 'skipOnError' => true, 'targetClass' => Unit::class, 'targetAttribute' => ['get_unit' => 'id_unit']],
         ];
     }
 

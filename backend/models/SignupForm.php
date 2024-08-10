@@ -6,7 +6,7 @@ use common\models\Jabatan;
 use Yii;
 use yii\base\Model;
 use common\models\User;
-
+use common\models\Unit;
 /**
  * Signup form
  */
@@ -16,7 +16,7 @@ class SignupForm extends Model
     public $email;
     public $password;
     public $nip;
-   public $get_unit;
+    public $get_unit;
     public $level;
 
     /**
@@ -42,7 +42,7 @@ class SignupForm extends Model
             ['nip', 'string', 'min' => 18, 'max' => 18],
             
             ['level', 'safe'],
-
+            ['get_unit', 'required'],
             [['get_unit'], 'exist', 'skipOnError' => true, 'targetClass' => Unit::class, 'targetAttribute' => ['get_unit' => 'id_unit']],
         ];
     }

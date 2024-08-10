@@ -67,14 +67,15 @@ $this->params['breadcrumbs'][] = $this->title;
                         'columns' => [
                             ['class' => 'yii\grid\SerialColumn'],
                             'username',
-                            'email:email',
-                            // [
-                            //     'attribute' =>  'get_jabatan',
-                            //     'value' => function ($model) {
-                            //         return $model->jabatans->jabatan;
-                            //     },
-                            //     'label' => 'Jabatan'
-                            // ],
+                           
+                            [
+                                'attribute' =>  'get_unit',
+                                'value' => function ($model) {
+                                    return $model->unit->nama_unit;
+                                },
+                                'label' => 'Unit Kerja'
+                            ],
+                             'email:email',
                             'nip',
                             'level',
                             [
@@ -130,13 +131,14 @@ $this->params['breadcrumbs'][] = $this->title;
                             // ['class' => 'yii\grid\SerialColumn'],
                             'username',
                             'email:email',
-                            // [
-                            //     'attribute' =>  'get_jabatan',
-                            //     'value' => function ($model) {
-                            //         return $model->jabatans->jabatan;
-                            //     },
-                            //     'label' => 'Jabatan'
-                            // ],
+                            [
+                                'attribute' =>  'get_unit',
+                                'value' => function ($model) {
+                                    return $model->unit->nama_unit;
+                                },
+                                'label' => 'Unit Kerja'
+                            ],
+
                             'nip',
                             'level',
                             [

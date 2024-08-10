@@ -12,6 +12,7 @@ use yii\helpers\Url;
 use common\models\Unit;
 $this->title = 'Signup';
 $this->params['breadcrumbs'][] = $this->title;
+var_dump($model->getErrors());
 ?>
 
 <div class="container container-tight py-4">
@@ -44,8 +45,14 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <div class="mb-2">
                     <?= $form->field($model, 'get_unit')->dropDownList(
-                       ['umum' => 'Umum', 'keuangan' => 'Keuangan', 'kepegawaian' => 'Kepegawaian', 'panitra' => 'Panitra',  'jurusita' => 'Jurusita', 'ppnpn' => 'PPNPN',]  
-                       ,['prompt' => '-- Pilih Unit Kerja --']
+                        ArrayHelper::map(
+                            $data=Unit::find()->all(),
+                            'id_unit',
+                            function ($data){
+                                return $data->nama_unit;
+                            }
+                        ),
+                        ['prompt' => '-- Pilih Unit Kerja --']
                     )->label('') ?>
             </div>
 

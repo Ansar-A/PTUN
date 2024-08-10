@@ -1,7 +1,7 @@
 <?php
 
 namespace common\models;
-use common\models\User;
+use yii\db\ActiveRecord;
 use Yii;
 
 /**
@@ -12,7 +12,7 @@ use Yii;
  *
  * @property User[] $users
  */
-class Unit extends \yii\db\ActiveRecord
+class Unit extends ActiveRecord
 {
     /**
      * {@inheritdoc}

@@ -19,7 +19,7 @@ class UserSearch extends User
     {
         return [
             [['id', 'status', 'created_at', 'updated_at'], 'integer'],
-            [['username', 'auth_key', 'password_hash', 'password_reset_token', 'email', 'verification_token', 'nip', 'level'], 'safe'],
+            [['username', 'auth_key', 'password_hash', 'password_reset_token', 'email', 'verification_token', 'nip', 'level', 'get_unit'], 'safe'],
         ];
     }
 
@@ -61,14 +61,14 @@ class UserSearch extends User
             // $query->where('0=1');
             return $dataProvider;
         }
-
+$query->joinWith(['unit']);
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
             'status' => $this->status,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-            
+                       
         ]);
 
         $query->andFilterWhere(['like', 'username', $this->username])
@@ -78,6 +78,7 @@ class UserSearch extends User
             ->andFilterWhere(['like', 'email', $this->email])
             ->andFilterWhere(['like', 'verification_token', $this->verification_token])
             ->andFilterWhere(['like', 'nip', $this->nip])
+            ->andFilterWhere(['like', 'unit.nama_unit', $this->get_unit])
             ->andFilterWhere(['like', 'level', $this->level]);
 
         return $dataProvider;

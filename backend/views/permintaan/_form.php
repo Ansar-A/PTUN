@@ -88,6 +88,30 @@ use yii\widgets\ActiveForm;
                     }
                     ?>
                 </div>
+                <div class="col-md-4">
+                    <?php
+                    $user = Yii::$app->user->identity;
+                    if ($user) {
+                        $data = User::find()->where(['id' => $user->id])->all();
+
+                        echo $form->field($model, 'get_user')->dropDownList(
+                            ArrayHelper::map(
+                                $data,
+                                'id',
+                                function ($data) {
+                                    return $data->unit->nama_unit;
+                                }
+                            ),
+                            [
+                                'options' => ['disabled' => true],
+                            ]
+                        )->label('Unit Kerja');
+                    } else {
+                        // Handle the case when the user is not logged in or the identity is null
+                        echo "User not logged in.";
+                    }
+                    ?>
+                </div>
                 
                 <div class="col-md-4">
                     <?= $form->field($model, 'get_jenis')->dropDownList(
